@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'coffitivity-pwa';
+  audio: HTMLAudioElement;
+  currentAudio: string;
+
+  constructor() {
+    this.audio = new Audio();
+    this.audio.loop = true;
+    this.currentAudio = '';
+  }
+
+  playAudio(audioName: string) {
+    if (this.currentAudio == audioName) {
+      this.audio.pause();
+    } else {
+      this.currentAudio = audioName;
+      this.audio.pause();
+      this.audio.src = `./../assets/${audioName}.mp3`;
+      this.audio.load();
+      this.audio.play();
+    }
+  }
 }
