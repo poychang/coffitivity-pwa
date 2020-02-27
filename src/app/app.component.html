@@ -3,19 +3,10 @@
   <h1 class="mainTitle">Coffitivity PWA</h1>
   <h3 class="mainSubtext">recreate ambient sounds of cafes to boost your creativity</h3>
 
-  <div class="musicOptBox" id="murmur" (click)="playAudio('murmur')">
-    <p class="musicOptBox__title">Morning Murmur</p>
-    <p class="musicOptBox__desc">A gentle hum gets the day going</p>
-  </div>
-
-  <div class="musicOptBox" id="lunch" (click)="playAudio('lunch')">
-    <p class="musicOptBox__title">Lunchtime Lounge</p>
-    <p class="musicOptBox__desc">Busting chatter of the lunchtime rush</p>
-  </div>
-
-  <div class="musicOptBox" id="univ" (click)="playAudio('univ')">
-    <p class="musicOptBox__title">University Undertones</p>
-    <p class="musicOptBox__desc">The scholarly sounds of a campus cafe</p>
+  <div *ngFor="let item of playlist" class="musicOptBox" (click)="playAudio(item.audioName)">
+    <p class="musicOptBox__title">{{ item.title }}</p>
+    <p class="musicOptBox__desc">{{ item.desc }}</p>
+    <i class="play-button" [ngClass]="{'icon-play': item.status, 'icon-pause': !item.status}"></i>
   </div>
 
   <div class="about">

@@ -41,7 +41,6 @@
   letter-spacing: 0.2px;
   font-weight: 600;
   text-align: center;
-  /* text-transform: uppercase; */
   text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.42);
 }
 
@@ -67,6 +66,16 @@
   color: #648bcc;
   font-size: 12px;
   padding: 2px 0px;
+}
+
+.play-button {
+  margin-top: -31px;
+  float: right;
+  margin-right: 2px;
+  font-size: 22px;
+  color: #81a4e0;
+  transition: .5s all;
+  opacity: .5;
 }
 
 p {
@@ -107,12 +116,12 @@ p {
   color: rgb(48, 60, 80);
   transition: 0.2s ease;
   padding: 0px 15px;
-}
 
-.footer-icon:hover {
-  cursor: pointer;
-  color: rgb(48, 60, 80);
-  transition: 0.5s ease;
+  &:hover {
+    cursor: pointer;
+    color: rgb(48, 60, 80);
+    transition: 0.5s ease;
+  }
 }
 
 footer {
