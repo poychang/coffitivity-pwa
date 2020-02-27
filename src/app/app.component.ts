@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   audio: HTMLAudioElement;
-  currentAudio: string;
   playlist = [
     {
       title: 'Morning Murmur',
@@ -32,25 +31,21 @@ export class AppComponent {
   constructor() {
     this.audio = new Audio();
     this.audio.loop = true;
-    this.currentAudio = '';
   }
 
   playAudio(audioName: string) {
-    this.toggleAudioStatus(audioName);
-    if (this.currentAudio == audioName) {
+    let currentAudio = this.playlist.find(p => p.audioName === audioName);
+    if (currentAudio.status) {
+      console.log(`pause current ${audioName} audio`);
       this.audio.pause();
+      currentAudio.status = false;
     } else {
-      this.currentAudio = audioName;
+      console.log(`play ${audioName} audio`);
       this.audio.pause();
-      this.audio.src = `./../assets/${audioName}.mp3`;
+      this.audio.src = `./assets/audio/${audioName}.mp3`;
       this.audio.load();
       this.audio.play();
+      currentAudio.status = true;
     }
-  }
-
-  toggleAudioStatus(audioName: string) {
-    this.playlist.filter(p => p.audioName !== audioName).map(p => (p.status = false));
-    let toggle = this.playlist.find(p => p.audioName === audioName);
-    toggle.status = !toggle.status;
   }
 }
